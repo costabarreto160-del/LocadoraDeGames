@@ -25,4 +25,11 @@ public class Jogos {
         return qtdEmEstoque;
     }
 
+    public void diminuirEstoque(){
+        qtdEmEstoque--;
+    }
+
+    public void aumentarEstoque(){
+        qtdEmEstoque++;
+    }
 }

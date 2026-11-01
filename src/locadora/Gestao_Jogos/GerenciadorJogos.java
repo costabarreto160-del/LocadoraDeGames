@@ -11,5 +11,16 @@ public class GerenciadorJogos {
     public void remover(Jogos jogo){
         this.jogo.remove(jogo);
     }
+    public ArrayList<Jogos> getJogos(){
+        return jogo;
+    }
 
+    public Jogos buscar(String titulo, String plataforma){
+        for (Jogos j : jogo) {
+            if (j.getTitulo().equalsIgnoreCase(titulo) && j.getPlataforma().equalsIgnoreCase(plataforma)) {
+                return j;
+            }
+        }
+        return null;
+    }
 }
