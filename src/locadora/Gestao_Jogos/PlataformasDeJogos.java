@@ -1,4 +1,4 @@
-package GestaoDeJogos;
+package locadora.Gestao_Jogos;
 
 import java.util.ArrayList;
 

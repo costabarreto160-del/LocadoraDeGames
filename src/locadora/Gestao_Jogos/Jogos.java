@@ -1,4 +1,4 @@
-package GestaoDeJogos;
+package locadora.Gestao_Jogos;
 
 public class Jogos {
     public String titulo;
