@@ -39,9 +39,16 @@ public class UserService {
                 return u;
 
             }
-
         }
         System.out.println("ERRO: Login ou senha incorretos!");
+        return null;
+    }
+    public User buscarPorLogin(String login){
+        for (User u : listarUser) {
+            if (u.getLogin().equals(login)) {
+                return u;
+            }
+        }
         return null;
     }
 }
