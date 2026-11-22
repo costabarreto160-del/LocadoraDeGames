@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import GestaoDeJogos.Jogos;
+import locadora.model.Usuario;
 
 
 public class Persistencia {
@@ -18,7 +19,10 @@ public class Persistencia {
         List<String> linhas=new ArrayList<>();
 
         for (Jogos j : Lista) {
-            String linha=j.getTitulo()+ ":" + j.getPlataforma() +":" +j.getGenero()+ ":" +j.getQtdEmEstoque();
+            Usuario comprador=j.getComprador();
+            String nomeComprador=(comprador != null && comprador.getNome() != null && !comprador.getNome(),isEmpty())
+                ? comprador.getNome() : "Sem comprador";
+            String linha=j.getTitulo()+ ";" + j.getPlataforma() +";" +j.getGenero()+ ";" +j.getQtdEmEstoque() +";" +nomeComprador;
             linhas.add(linha);
         }
         try {
