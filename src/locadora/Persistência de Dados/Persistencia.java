@@ -43,7 +43,7 @@ public class Persistencia {
         
         for (String linha : linhas) {
             
-            String[] dados = linha.split(":");
+            String[] dados = linha.split(";");
 
             
             String titulo = dados[0];
