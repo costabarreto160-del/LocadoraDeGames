@@ -43,6 +43,26 @@ public class Aluguel {
         this.valorPenalidade = 0.0;
     }
 
+    // Construtor usado para recarregar um aluguel salvo no arquivo (mantém o id e os dados originais)
+    public Aluguel(int id, User usuario, Jogos jogo, LocalDate dataAluguel,
+                   LocalDate dataPrevistaDevolucao, LocalDate dataDevolucao, double valorPenalidade) {
+        this.id = id;
+        reservarId(id);
+        this.usuario = usuario;
+        this.jogo = jogo;
+        this.dataAluguel = dataAluguel;
+        this.dataPrevistaDevolucao = dataPrevistaDevolucao;
+        this.dataDevolucao = dataDevolucao;
+        this.valorPenalidade = valorPenalidade;
+    }
+
+    // Garante que o próximo id gerado nunca repita um id que já existe no arquivo
+    public static void reservarId(int id) {
+        if (id >= proximoId) {
+            proximoId = id + 1;
+        }
+    }
+
     public boolean isDevolvido() {
         return dataDevolucao != null;
     }
@@ -78,6 +98,12 @@ public class Aluguel {
 
         this.valorPenalidade = calculadora.calcular(diasAtraso);
         this.dataDevolucao = dataDevolucao;
+    }
+
+    // Usado só quando a gravação em arquivo falha logo após uma devolução: volta o aluguel ao estado anterior
+    public void desfazerDevolucao() {
+        this.dataDevolucao = null;
+        this.valorPenalidade = 0.0;
     }
 
     public int getId() {
